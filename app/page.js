@@ -159,7 +159,7 @@ export default function Page() {
       </header>
 
       {/* Main */}
-<main className="flex-1 flex items-center justify-center w-full px-4 sm:px-6 min-h-[calc(100vh-80px)] mt-[-20px] md:mt-[80px]">
+<main className="flex-1 flex items-center justify-center w-full px-4 sm:px-6 min-h-[calc(100vh-80px)] mt-[-35px] md:mt-[80px]">
 
 
         {!started ? (
