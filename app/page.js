@@ -183,8 +183,8 @@ return (
           />
         </div>
 
-        <h2 className="text-lg md:text-xl font-medium mb-2">Question {currentIndex + 1} / {questions.length}</h2>
-        <p className="text-lg mb-4 text-gray-700">{questions[currentIndex].question}</p>
+        <h2 className="md:text-xl font-medium mb-2">Question {currentIndex + 1} / {questions.length}</h2>
+        <p className="mb-4 text-gray-700">{questions[currentIndex].question}</p>
 
         <div className="sm:text-[16px] grid grid-cols-1 gap-3">
           {questions[currentIndex].options.map((option, idx) => {
