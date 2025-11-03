@@ -155,7 +155,7 @@ setQuizKey((prev) => prev + 1);
 
 return (
 <div className={`min-h-screen flex flex-col justify-between ${inter.className} bg-green-700 transition-all duration-700`}>
-{/* Header */} <header className="flex flex-col items-center justify-start pt-25 md:pt-15 w-full bg-green-700 text-white fixed top-0 left-0 z-20"> <div className="flex items-center gap-2"> <img
+{/* Header */} <header className="flex flex-col items-center justify-start pt-15 w-full bg-green-700 text-white fixed top-0 left-0 z-20"> <div className="flex items-center gap-2"> <img
          src="https://pbs.twimg.com/profile_images/1962180241927061504/FqGvk1jN_400x400.jpg"
          alt="Stable Logo"
          className="w-9 h-9 md:w-11 md:h-11 rounded-full"
@@ -186,7 +186,7 @@ return (
         <h2 className="text-lg md:text-xl font-medium mb-2">Question {currentIndex + 1} / {questions.length}</h2>
         <p className="text-lg mb-4 text-gray-700">{questions[currentIndex].question}</p>
 
-        <div className="text-lg sm:text-[16px] grid grid-cols-1 gap-3">
+        <div className="sm:text-[16px] grid grid-cols-1 gap-3">
           {questions[currentIndex].options.map((option, idx) => {
             let bgColor = "bg-white text-gray-800";
             if (selectedOption) {
