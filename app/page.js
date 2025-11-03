@@ -160,7 +160,7 @@ export default function Page() {
       </header>
 
       {/* Main */}
-      <main className="flex-1 flex items-center justify-center w-full px-4 sm:px-6 min-h-[calc(100vh-120px)]  md:mt-[80px]">
+      <main className="flex-1 flex items-center justify-center w-full px-4 sm:px-6 min-h-[calc(100vh-120px)] mt-[-20px]  md:mt-[80px]">
         <div className="flex items-center justify-center w-full">
           {!started ? (
             <div className="bg-white/90 dark:bg-gray-800 rounded-3xl p-6 sm:p-10 shadow-xl w-full max-w-md text-center transition-all duration-500">
