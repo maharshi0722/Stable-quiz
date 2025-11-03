@@ -137,16 +137,15 @@ export default function Page() {
     setCurrentIndex(0);
     setFinished(false);
     setQuizKey((prev) => prev + 1);
-    setStarted(false);
   };
 
   return (
     <div
-      className={`min-h-screen flex flex-col justify-between ${inter.className} 
-      bg-green-700 dark:bg-gray-900 transition-all duration-700 text-gray-900 dark:text-gray-100`}
+      className={`min-h-screen flex flex-col justify-between ${inter.className}
+      bg-green-700 text-white transition-all duration-700`}
     >
       {/* Header */}
-      <header className="flex flex-col items-center justify-start pt-5 md:pt-8 w-full bg-green-700 dark:bg-gray-800 text-white fixed top-0 left-0 z-20">
+      <header className="flex flex-col items-center justify-start pt-5 md:pt-8 w-full bg-green-700 text-white fixed top-0 left-0 z-20">
         <div className="flex items-center gap-2 px-3">
           <img
             src="https://pbs.twimg.com/profile_images/1962180241927061504/FqGvk1jN_400x400.jpg"
@@ -160,86 +159,81 @@ export default function Page() {
       </header>
 
       {/* Main */}
-      <main className="flex-1 flex items-center justify-center w-full px-4 sm:px-6 min-h-[calc(100vh-120px)] mt-[-20px]  md:mt-[80px]">
-        <div className="flex items-center justify-center w-full">
-          {!started ? (
-            <div className="bg-white/90 dark:bg-gray-800 rounded-3xl p-6 sm:p-10 shadow-xl w-full max-w-md text-center transition-all duration-500">
-              <h2 className="text-2xl font-semibold text-green-800 dark:text-green-400 mb-2">
-                Welcome to the Stable Quiz!
-              </h2>
-              <p className="text-gray-700 dark:text-gray-300 mb-6 text-sm sm:text-base leading-relaxed">
-                Test your knowledge of Stable blockchain and USDT features. 10 challenging questions
-                await.
-              </p>
-              <button
-                onClick={() => setStarted(true)}
-                className="px-6 py-2 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-full shadow hover:scale-105 transition-transform font-medium"
-              >
-                Start Quiz
-              </button>
-            </div>
-          ) : !finished ? (
-            <div className="bg-white/90 dark:bg-gray-800 rounded-3xl p-6 sm:p-10 shadow-xl w-full max-w-md">
-              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-4 overflow-hidden">
-                <div
-                  className="bg-green-500 h-2 rounded-full transition-all duration-700"
-                  style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
-                />
-              </div>
+<main className="flex-1 flex items-center justify-center w-full px-4 sm:px-6 min-h-[calc(100vh-80px)] mt-[-20px] md:mt-[80px]">
 
-              <h2 className="text-base sm:text-lg font-semibold mb-3 text-center">
-                Question {currentIndex + 1} / {questions.length}
-              </h2>
-              <p className="mb-4 text-gray-800 dark:text-gray-200 text-center text-sm sm:text-base leading-relaxed">
-                {questions[currentIndex].question}
-              </p>
 
-              <div className="grid grid-cols-1 gap-3">
-                {questions[currentIndex].options.map((option, idx) => {
-                  let bgColor = "bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100";
-                  if (selectedOption) {
-                    if (option === questions[currentIndex].answer)
-                      bgColor = "bg-green-500 text-white transition-colors duration-300";
-                    else if (option === selectedOption && option !== questions[currentIndex].answer)
-                      bgColor = "bg-red-400 text-white transition-colors duration-300";
-                  }
-                  return (
-                    <button
-                      key={idx}
-                      onClick={() => handleSelect(option)}
-                      disabled={disableOptions}
-                      className={`border border-gray-200 dark:border-gray-600 rounded-xl p-3 text-left w-full shadow-sm hover:scale-105 transition-all duration-300 ${bgColor}`}
-                    >
-                      {option}
-                    </button>
-                  );
-                })}
-              </div>
+        {!started ? (
+          <div className="bg-white/95 rounded-3xl p-6 sm:p-10 shadow-xl w-full max-w-md text-center text-gray-900">
+            <h2 className="text-2xl font-semibold text-green-800 mb-2">
+              Welcome to the Stable Quiz!
+            </h2>
+            <p className="text-gray-700 mb-6 text-sm sm:text-base leading-relaxed">
+              Test your knowledge of Stable blockchain and USDT features. 10 challenging questions await.
+            </p>
+            <button
+              onClick={() => setStarted(true)}
+              className="px-6 py-2 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-full shadow hover:scale-105 transition-transform font-medium"
+            >
+              Start Quiz
+            </button>
+          </div>
+        ) : !finished ? (
+          <div className="bg-white/95 rounded-3xl p-6 sm:p-10 shadow-xl w-full max-w-md text-gray-900">
+            <div className="w-full bg-gray-200 rounded-full h-2 mb-4 overflow-hidden">
+              <div
+                className="bg-green-500 h-2 rounded-full transition-all duration-700"
+                style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
+              />
             </div>
-          ) : (
-            <div className="bg-white/90 dark:bg-gray-800 rounded-3xl p-8 sm:p-12 shadow-xl text-center w-full max-w-md">
-              <h2 className="text-2xl font-bold mb-2 text-green-800 dark:text-green-400">
-                Quiz Completed!
-              </h2>
-              <p className="text-base mb-2">
-                Your Score: <span className="font-bold">{score}</span> / {questions.length}
-              </p>
-              <p className="mb-4">
-                Great job! Keep learning and exploring Stable blockchain features!
-              </p>
-              <button
-                onClick={handleRestart}
-                className="px-6 py-2 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-full shadow hover:scale-105 transition-transform font-medium"
-              >
-                Restart Quiz
-              </button>
+
+            <h2 className="text-base sm:text-lg font-semibold mb-3 text-center text-green-800">
+              Question {currentIndex + 1} / {questions.length}
+            </h2>
+            <p className="mb-4 text-gray-800 text-center text-sm sm:text-base leading-relaxed">
+              {questions[currentIndex].question}
+            </p>
+
+            <div className="grid grid-cols-1 gap-3">
+              {questions[currentIndex].options.map((option, idx) => {
+                let bgColor = "bg-white text-gray-800";
+                if (selectedOption) {
+                  if (option === questions[currentIndex].answer)
+                    bgColor = "bg-green-500 text-white transition-colors duration-300";
+                  else if (option === selectedOption && option !== questions[currentIndex].answer)
+                    bgColor = "bg-red-400 text-white transition-colors duration-300";
+                }
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => handleSelect(option)}
+                    disabled={disableOptions}
+                    className={`border border-gray-200 rounded-xl p-3 text-left w-full shadow-sm hover:scale-105 transition-all duration-300 ${bgColor}`}
+                  >
+                    {option}
+                  </button>
+                );
+              })}
             </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className="bg-white/95 rounded-3xl p-8 sm:p-12 shadow-xl text-center w-full max-w-md text-gray-900">
+            <h2 className="text-2xl font-bold mb-2 text-green-800">Quiz Completed!</h2>
+            <p className="text-base mb-2">
+              Your Score: <span className="font-bold">{score}</span> / {questions.length}
+            </p>
+            <p className="mb-4">Great job! Keep learning and exploring Stable blockchain features!</p>
+            <button
+              onClick={handleRestart}
+              className="px-6 py-2 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-full shadow hover:scale-105 transition-transform font-medium"
+            >
+              Restart Quiz
+            </button>
+          </div>
+        )}
       </main>
 
       {/* Footer */}
-      <footer className="fixed bottom-0 w-full py-2 text-center bg-green-700 dark:bg-gray-800 text-white text-sm sm:text-base">
+      <footer className="fixed bottom-0 w-full py-2 text-center bg-green-700 text-white text-sm sm:text-base">
         &copy; {new Date().getFullYear()} Stable Quiz — Built by Maharshi
       </footer>
     </div>
