@@ -147,11 +147,7 @@ export default function Page() {
       {/* Header */}
       <header className="flex flex-col items-center justify-start pt-5 md:pt-8 w-full bg-green-700 text-white fixed top-0 left-0 z-20">
         <div className="flex items-center gap-2 px-3">
-          <img
-            src="https://pbs.twimg.com/profile_images/1962180241927061504/FqGvk1jN_400x400.jpg"
-            alt="Stable Logo"
-            className="w-9 h-9 md:w-11 md:h-11 rounded-full"
-          />
+         
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-green-100">
             Stable Quiz
           </h1>
